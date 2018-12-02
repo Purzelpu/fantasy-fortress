@@ -20,13 +20,13 @@ void curses_output()
 	for(unsigned int x=0;x<BREIT;++x)
 	for(unsigned int y=0;y<HOCH;++y)
 	{
-		if(feld[x][y] == nullptr)
+		if(World::feld[x][y] == nullptr)
 		{
 			mvaddch(y,x,'.');
 		}
 		else
 		{
-			mvaddch(y,x,feld[x][y] -> getSymbol());
+			mvaddch(y,x,World::feld[x][y] -> getSymbol());
 		}
 		refresh();
 	}

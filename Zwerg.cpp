@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Zwerg.hpp"
 #include "Bush.hpp"
+#include "World.hpp"
 
 void Zwerg::tick()
 {
@@ -11,7 +12,7 @@ void Zwerg::tick()
 	{
 		int dx = std::rand() % 3  - 1 ;
 		int dy = std::rand() % 3 - 1;
-		coord = move(coord, {coord.x+ dx, coord.y+dy});
+		coord = World::move(coord, {coord.x+ dx, coord.y+dy});
 	}
 	else
 	{
@@ -20,12 +21,12 @@ void Zwerg::tick()
 		if(food.size() > 1)
 		{
 			coordinate step = food.back();
-			coord = move(coord ,step);
+			coord = World::move(coord ,step);
 		}
 		if(food.size() == 1)
 		{
 			coordinate bush_coord = food.back();
-			Object* busch = feld[bush_coord.x][bush_coord.y];
+			Object* busch = World::feld[bush_coord.x][bush_coord.y];
 			if(busch->isEdible() && ((Busch*)busch)->hatBeeren())
 			{
 				((Busch*)busch)->nimmBeeren();
@@ -36,26 +37,6 @@ void Zwerg::tick()
 	}
 }
 
-coordinate move(coordinate from, coordinate to)
-{
-	//Bereich
-	if(to.x >= BREIT || to.y >= HOCH)
-	{
-		return from;
-		//throw exception?
-	}
-
-	//Besetzt
-	if(feld[to.x][to.y] != nullptr)
-	{
-		return from;
-		//throw ex? 
-	}
-
-	//std::cout << "Move to " << to.x << " " << to.y << std::endl;
-	std::swap(feld[from.x][from.y], feld[to.x][to.y]);
-	return to;
-}
 
 //Use flood fill to find the bush closest to (x,y).
 std::vector<coordinate> findNextFood(coordinate root)
@@ -80,7 +61,7 @@ std::vector<coordinate> findNextFood(coordinate root)
 		expand = frontier.back();
 		frontier.pop_back();
 		//std::cout << "Expanding " << expand.x << " " << expand.y << std::endl;
-		if (feld[expand.x][expand.y] != nullptr && feld[expand.x][expand.y]->isEdible())
+		if (World::feld[expand.x][expand.y] != nullptr && World::feld[expand.x][expand.y]->isEdible())
 		{
 			//std::cout << "Found something @" << expand.x << " " << expand.y << std::endl;
 			break;

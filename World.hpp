@@ -6,4 +6,12 @@
 
 const unsigned int HOCH = 10;
 const unsigned int BREIT = 10;
-extern Object* feld[BREIT][HOCH];
+
+class World{
+	public:
+	static Object* feld[BREIT][HOCH];
+	static coordinate move(coordinate, coordinate);
+	static void init();
+	static void tick();
+};
+
