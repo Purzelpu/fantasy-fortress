@@ -24,6 +24,10 @@ void World::tick()
 
 }
 
+Object* World::getObjectAt(coordinate& c)
+{
+	return feld[c.x][c.y];
+}
 
 coordinate World::move(coordinate from, coordinate to)
 {
@@ -35,7 +39,7 @@ coordinate World::move(coordinate from, coordinate to)
 	}
 
 	//Besetzt
-	if(feld[to.x][to.y] != nullptr)
+	if(getObjectAt(to) != nullptr)
 	{
 		return from;
 		//throw ex? 

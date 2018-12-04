@@ -26,7 +26,7 @@ void Zwerg::tick()
 		if(food.size() == 1)
 		{
 			coordinate bush_coord = food.back();
-			Object* busch = World::feld[bush_coord.x][bush_coord.y];
+			Object* busch = World::getObjectAt(bush_coord);
 			if(busch->isEdible() && ((Busch*)busch)->hatBeeren())
 			{
 				((Busch*)busch)->nimmBeeren();
@@ -61,7 +61,7 @@ std::vector<coordinate> findNextFood(coordinate root)
 		expand = frontier.back();
 		frontier.pop_back();
 		//std::cout << "Expanding " << expand.x << " " << expand.y << std::endl;
-		if (World::feld[expand.x][expand.y] != nullptr && World::feld[expand.x][expand.y]->isEdible())
+		if (World::getObjectAt(expand) != nullptr && World::getObjectAt(expand)->isEdible())
 		{
 			//std::cout << "Found something @" << expand.x << " " << expand.y << std::endl;
 			break;

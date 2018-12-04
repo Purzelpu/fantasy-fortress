@@ -13,5 +13,6 @@ class World{
 	static coordinate move(coordinate, coordinate);
 	static void init();
 	static void tick();
+	static Object* getObjectAt(coordinate& c);
 };
 
