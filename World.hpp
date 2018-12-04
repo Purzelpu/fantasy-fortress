@@ -4,8 +4,8 @@
 #include <iostream>
 
 
-const unsigned int HOCH = 10;
-const unsigned int BREIT = 10;
+const unsigned int HOCH = 20;
+const unsigned int BREIT = 30;
 
 class World{
 	public:
