@@ -2,15 +2,10 @@
 #include "Zwerg.hpp"
 #include "Bush.hpp"
 
-Object* World::feld[BREIT][HOCH] = {0};
+	Object* World::feld[BREIT][HOCH] = {nullptr};
 
 void World::init()
 {
-	for(unsigned int i=0;i<BREIT;i++)
-		for(unsigned int j=0;j<HOCH;j++)
-		{
-			feld[i][j] = nullptr;
-		}
 	feld[3][3] = new Busch({3,3});
 	feld[7][7] = new Zwerg({7,7});
 	feld[4][5] = new Busch({4,5});
