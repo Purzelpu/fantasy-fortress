@@ -2,6 +2,8 @@
 
 #include "Object.hpp"
 #include <iostream>
+#include <vector>
+#include "Action.hpp"
 
 
 const unsigned int HOCH = 20;
@@ -11,8 +13,12 @@ class World{
 	public:
 	static Object* feld[BREIT][HOCH];
 	static coordinate move(coordinate, coordinate);
+	static Object* getObjectAt(coordinate& c);
+	static bool isValid(const coordinate&);
 	static void init();
 	static void tick();
-	static Object* getObjectAt(coordinate& c);
+	static void registerAction(Action* action);
+
+	static std::vector<Action*> action_queue;
 };
 

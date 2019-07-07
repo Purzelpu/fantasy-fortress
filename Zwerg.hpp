@@ -14,7 +14,7 @@ class Zwerg : public Object
 		void tick();
 
 		char getSymbol() {
-			return 'Z';
+			return (hunger<10) ? 'Z' : 'z';
 		}
 };
 

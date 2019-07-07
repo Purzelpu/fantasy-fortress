@@ -4,6 +4,7 @@
 #include "Zwerg.hpp"
 #include "Bush.hpp"
 #include "World.hpp"
+#include "Move.hpp"
 
 void Zwerg::tick()
 {
@@ -12,7 +13,7 @@ void Zwerg::tick()
 	{
 		int dx = std::rand() % 3  - 1 ;
 		int dy = std::rand() % 3 - 1;
-		coord = World::move(coord, {coord.x+ dx, coord.y+dy});
+		World::registerAction(new Move(this, coord, {coord.x+dx, coord.y+dy}));
 	}
 	else
 	{
@@ -21,7 +22,7 @@ void Zwerg::tick()
 		if(food.size() > 1)
 		{
 			coordinate step = food.back();
-			coord = World::move(coord ,step);
+			World::registerAction(new Move(this, coord, step));
 		}
 		if(food.size() == 1)
 		{
