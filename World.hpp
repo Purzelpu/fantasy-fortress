@@ -12,7 +12,6 @@ const unsigned int BREIT = 30;
 class World{
 	public:
 	static Object* feld[BREIT][HOCH];
-	static coordinate move(coordinate, coordinate);
 	static Object* getObjectAt(coordinate& c);
 	static bool isValid(const coordinate&);
 	static void init();

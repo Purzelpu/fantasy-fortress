@@ -1,7 +1,6 @@
 #include "World.hpp"
 #include "Zwerg.hpp"
 #include "Bush.hpp"
-#include <iostream>
 
 Object* World::feld[BREIT][HOCH] = {nullptr};
 std::vector<Action*> World::action_queue;
@@ -28,7 +27,6 @@ void World::tick()
 	//Acting
 	for(Action* a : action_queue)
 	{
-		std::cout << "action" << std::endl;
 		a->execute();
 		delete a;
 	}
@@ -47,29 +45,7 @@ Object* World::getObjectAt(coordinate& c)
 	return feld[c.x][c.y];
 }
 
-coordinate World::move(coordinate from, coordinate to)
-{
-	//Bereich
-	if(to.x >= BREIT || to.y >= HOCH)
-	{
-		return from;
-		//throw exception?
-	}
-
-	//Besetzt
-	if(getObjectAt(to) != nullptr)
-	{
-		return from;
-		//throw ex? 
-	}
-
-	//std::cout << "Move to " << to.x << " " << to.y << std::endl;
-	std::swap(feld[from.x][from.y], feld[to.x][to.y]);
-	return to;
-}
-
 void World::registerAction(Action* a)
 {
-	std::cout << "Register " <<std::endl;
 	action_queue.push_back(a);
 }

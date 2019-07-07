@@ -18,5 +18,4 @@ class Zwerg : public Object
 		}
 };
 
-coordinate move(coordinate, coordinate);
 std::vector<coordinate> findNextFood(coordinate);
