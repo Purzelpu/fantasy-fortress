@@ -17,4 +17,5 @@ void Move::execute()
 
 	std::swap(World::feld[from.x][from.y], World::feld[to.x][to.y]);
 	agent->coord = to;
+	logMessage = "Moving";
 }

@@ -4,12 +4,15 @@
 
 Object* World::feld[BREIT][HOCH] = {nullptr};
 std::vector<Action*> World::action_queue;
+CursesOutput World::output;
 
 void World::init()
 {
+
 	feld[3][3] = new Busch({3,3});
 	feld[7][7] = new Zwerg({7,7});
 	feld[11][5] = new Busch({11,5});
+
 }
 
 void World::tick()
@@ -29,9 +32,11 @@ void World::tick()
 	{
 		a->execute();
 		delete a;
+		output.writeLog(a -> logMessage);
 	}
 	action_queue.clear();
 
+	output.curses_output();
 }
 
 bool World::isValid(const coordinate& c)

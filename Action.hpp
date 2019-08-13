@@ -4,8 +4,9 @@
 class Action {
 	public:
 	Object* agent;
+	std::string logMessage;
 
-	Action(Object* a) : agent(a) {}
+	Action(Object* a) : agent(a), logMessage("") {}
 	virtual ~Action() {};
 
 	virtual void execute();

@@ -8,5 +8,4 @@ bool Action::isValid()
 
 void Action::execute()
 {
-	std::cout << "Do nothing" << std::endl;
 }
