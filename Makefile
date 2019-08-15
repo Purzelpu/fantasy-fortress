@@ -2,7 +2,7 @@ CXX = g++
 CXXFLAGS = -Wall
 LDFLAGS = -lncurses -ltinfo
 
-OBJ = Coordinate.o Bush.o Zwerg.o CursesOutput.o World.o Action.o Move.o TakeBerries.o start.o
+OBJ = Coordinate.o Bush.o Zwerg.o CursesOutput.o World.o Action.o Move.o GrowBerries.o TakeBerries.o start.o
 
 start: $(OBJ)
 	$(CXX) $(LDFLAGS) -o start $(OBJ)
@@ -15,6 +15,7 @@ Coordinate.o: Coordinate.cpp
 Action.o: Action.cpp
 Move.o: Move.cpp
 TakeBerries.o: TakeBerries.cpp
+GrowBerries.o: GrowBerries.cpp
 start.o: start.cpp
 
 .PHONY clean: 

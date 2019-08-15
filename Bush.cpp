@@ -1,18 +1,11 @@
 #include <iostream>
 #include "Bush.hpp"
+#include "World.hpp"
+#include "GrowBerries.hpp"
 
 	void Busch::tick()
 	{
-		count++;
-		if(count==5)
-		{
-			std::cout << count;
-			count = 0;
-			if(beeren < 5)
-			{
-				beeren++;
-			}
-		}
+		World::registerAction(new GrowBerries(this));
 	}
 
 	char Busch::getSymbol()

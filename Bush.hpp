@@ -4,9 +4,10 @@
 
 class Busch : public Object
 {
-	private:
-	unsigned char beeren=0;
-	unsigned char count=0;
+	friend class GrowBerries;
+	protected:
+		unsigned char beeren=0;
+		unsigned char stage = 0;
 
 	public:
 	Busch(coordinate c) : Object(c) {}
