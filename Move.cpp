@@ -12,6 +12,7 @@ void Move::execute()
 	if(!isValid())
 	{
 		//Throw?
+		logMessage = "can't move";
 		return;
 	}
 
