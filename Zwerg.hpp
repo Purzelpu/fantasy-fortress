@@ -7,8 +7,9 @@
 
 class Zwerg : public Object
 {
-	private:
+	protected:
 		unsigned char hunger;
+	friend class TakeBerries;
 	public:
 		Zwerg(coordinate c) : Object(c) {}
 		void tick();

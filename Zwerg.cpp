@@ -5,16 +5,19 @@
 #include "Bush.hpp"
 #include "World.hpp"
 #include "Move.hpp"
+#include "TakeBerries.hpp"
 
 void Zwerg::tick()
 {
 	hunger++;
+	//Wander aimlessly
 	if(hunger < 10)
 	{
 		int dx = std::rand() % 3  - 1 ;
 		int dy = std::rand() % 3 - 1;
 		World::registerAction(new Move(this, coord, {coord.x+dx, coord.y+dy}));
 	}
+	//Find food
 	else
 	{
 		std::vector<coordinate> food = findNextFood(coord);
@@ -27,14 +30,9 @@ void Zwerg::tick()
 		if(food.size() == 1)
 		{
 			coordinate bush_coord = food.back();
-			Object* busch = World::getObjectAt(bush_coord);
-			if(busch->isEdible() && ((Busch*)busch)->hatBeeren())
-			{
-				((Busch*)busch)->nimmBeeren();
-				hunger = 0;
-			}
+			Object* bush = World::getObjectAt(bush_coord);
+			World::registerAction(new TakeBerries(this, coord, bush));
 		}
-
 	}
 }
 
