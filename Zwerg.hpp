@@ -1,15 +1,14 @@
 #pragma once
 
 #include <vector>
-
 #include "World.hpp"
 #include "Object.hpp"
 
 class Zwerg : public Object
 {
+	friend class TakeBerries;
 	protected:
 		unsigned char hunger;
-	friend class TakeBerries;
 	public:
 		Zwerg(coordinate c) : Object(c) {}
 		void tick();
