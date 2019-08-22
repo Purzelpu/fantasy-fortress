@@ -4,6 +4,7 @@
 
 Object* World::feld[BREIT][HOCH] = {nullptr};
 std::vector<Action*> World::action_queue;
+std::vector<Job*> World::job_queue;
 CursesOutput World::output;
 
 void World::init()
@@ -53,4 +54,19 @@ Object* World::getObjectAt(coordinate& c)
 void World::registerAction(Action* a)
 {
 	action_queue.push_back(a);
+}
+
+void World::registerJob(Job* job)
+{
+	job_queue.push_back(job);
+}
+
+bool World::hasJobs()
+{
+	return !job_queue.empty();
+}
+
+Job* World::getJob()
+{
+	return job_queue.front();
 }

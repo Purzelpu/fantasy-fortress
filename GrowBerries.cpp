@@ -23,14 +23,13 @@ void GrowBerries::execute()
 	{
 		(bagent)-> beeren++;
 		bagent -> stage = 0;
-		logMessage = "Berries fully grown";
+		logMessage = "fully grown";
 	}
 	else
 	{
 		bagent -> stage++;
 		std::stringstream msgstream;
-		//TODO: funny output
-		msgstream << "Growing:   " << bagent->stage;
+		msgstream << "Growing:   " << +bagent->stage;
 		logMessage = msgstream.str();
 	}
 

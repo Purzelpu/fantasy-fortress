@@ -10,9 +10,9 @@
 void Zwerg::tick()
 {
 	hunger++;
-	//Wander aimlessly
 	if(hunger < 10)
 	{
+		//Wander aimlessly
 		int dx = std::rand() % 3  - 1 ;
 		int dy = std::rand() % 3 - 1;
 		World::registerAction(new Move(this, coord, {coord.x+dx, coord.y+dy}));
