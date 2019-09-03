@@ -5,6 +5,7 @@
 #include "Bush.hpp"
 #include "World.hpp"
 #include "Move.hpp"
+#include "GetJobAction.hpp"
 #include "TakeBerries.hpp"
 
 void Zwerg::tick()
@@ -12,10 +13,41 @@ void Zwerg::tick()
 	hunger++;
 	if(hunger < 10)
 	{
-		//Wander aimlessly
-		int dx = std::rand() % 3  - 1 ;
-		int dy = std::rand() % 3 - 1;
-		World::registerAction(new Move(this, coord, {coord.x+dx, coord.y+dy}));
+		if(job != nullptr)
+		{
+			//if not near job: move there
+			if(job->location.x > coord.x)
+			{
+				World::registerAction(new Move(this, coord, {coord.x+1,coord.y}));
+			}
+			else if(job->location.x < coord.x)
+			{
+				World::registerAction(new Move(this, coord, {coord.x-1,coord.y}));
+			}
+			else if(job->location.y < coord.y)
+			{
+				World::registerAction(new Move(this, coord, {coord.x,coord.y-1}));
+			}
+			else if(job->location.y > coord.y)
+			{
+				World::registerAction(new Move(this, coord, {coord.x,coord.y+1}));
+			}
+			//if near job: work
+		}
+		else
+		{
+			if(World::hasJobs())
+			{
+				World::registerAction(new GetJobAction(this));
+			}
+			else
+			{
+				//Wander aimlessly
+				int dx = std::rand() % 3  - 1 ;
+				int dy = std::rand() % 3 - 1;
+				World::registerAction(new Move(this, coord, {coord.x+dx, coord.y+dy}));
+			}
+		}
 	}
 	//Find food
 	else

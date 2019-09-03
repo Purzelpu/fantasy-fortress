@@ -14,6 +14,7 @@ void World::init()
 	feld[7][7] = new Zwerg({7,7});
 	feld[11][5] = new Busch({11,5});
 
+	World::registerJob(new Job({10, 9},7));
 }
 
 void World::tick()
@@ -68,5 +69,7 @@ bool World::hasJobs()
 
 Job* World::getJob()
 {
-	return job_queue.front();
+	Job* j = job_queue.back();
+	job_queue.pop_back();
+	return j;
 }

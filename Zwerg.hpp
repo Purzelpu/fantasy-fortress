@@ -3,12 +3,16 @@
 #include <vector>
 #include "World.hpp"
 #include "Object.hpp"
+#include "Job.hpp"
 
 class Zwerg : public Object
 {
 	friend class TakeBerries;
+	friend class GetJobAction;
 	protected:
-		unsigned char hunger;
+		unsigned char hunger = 0;
+		Job* job = nullptr;
+
 	public:
 		Zwerg(coordinate c) : Object(c) {}
 		void tick();
