@@ -9,6 +9,7 @@ class Zwerg : public Object
 {
 	friend class TakeBerries;
 	friend class GetJobAction;
+	friend class Work;
 	protected:
 		unsigned char hunger = 0;
 		Job* job = nullptr;

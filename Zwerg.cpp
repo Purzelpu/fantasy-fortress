@@ -5,6 +5,7 @@
 #include "Bush.hpp"
 #include "World.hpp"
 #include "Move.hpp"
+#include "Work.hpp"
 #include "GetJobAction.hpp"
 #include "TakeBerries.hpp"
 
@@ -32,7 +33,11 @@ void Zwerg::tick()
 			{
 				World::registerAction(new Move(this, coord, {coord.x,coord.y+1}));
 			}
-			//if near job: work
+
+			if (job->location == coord)
+			{
+				World::registerAction(new Work(this, job));
+			}
 		}
 		else
 		{
