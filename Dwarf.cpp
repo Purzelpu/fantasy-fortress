@@ -9,6 +9,8 @@
 #include "GetJobAction.hpp"
 #include "TakeBerries.hpp"
 
+extern World world;
+
 void Dwarf::tick()
 {
 	hunger++;
@@ -19,38 +21,38 @@ void Dwarf::tick()
 			//if not near job: move there
 			if(job->location.x > coord.x)
 			{
-				World::registerAction(new Move(this, coord, {coord.x+1,coord.y}));
+				world.registerAction(new Move(this, coord, {coord.x+1,coord.y}));
 			}
 			else if(job->location.x < coord.x)
 			{
-				World::registerAction(new Move(this, coord, {coord.x-1,coord.y}));
+				world.registerAction(new Move(this, coord, {coord.x-1,coord.y}));
 			}
 			else if(job->location.y < coord.y)
 			{
-				World::registerAction(new Move(this, coord, {coord.x,coord.y-1}));
+				world.registerAction(new Move(this, coord, {coord.x,coord.y-1}));
 			}
 			else if(job->location.y > coord.y)
 			{
-				World::registerAction(new Move(this, coord, {coord.x,coord.y+1}));
+				world.registerAction(new Move(this, coord, {coord.x,coord.y+1}));
 			}
 
 			if (job->location == coord)
 			{
-				World::registerAction(new Work(this, job));
+				world.registerAction(new Work(this, job));
 			}
 		}
 		else
 		{
-			if(World::hasJobs())
+			if(world.hasJobs())
 			{
-				World::registerAction(new GetJobAction(this));
+				world.registerAction(new GetJobAction(this));
 			}
 			else
 			{
 				//Wander aimlessly
 				int dx = std::rand() % 3  - 1 ;
 				int dy = std::rand() % 3 - 1;
-				World::registerAction(new Move(this, coord, {coord.x+dx, coord.y+dy}));
+				world.registerAction(new Move(this, coord, {coord.x+dx, coord.y+dy}));
 			}
 		}
 	}
@@ -62,13 +64,13 @@ void Dwarf::tick()
 		if(food.size() > 1)
 		{
 			coordinate step = food.back();
-			World::registerAction(new Move(this, coord, step));
+			world.registerAction(new Move(this, coord, step));
 		}
 		if(food.size() == 1)
 		{
 			coordinate bush_coord = food.back();
-			Object* bush = World::getObjectAt(bush_coord);
-			World::registerAction(new TakeBerries(this, coord, bush));
+			Object* bush = world.getObjectAt(bush_coord);
+			world.registerAction(new TakeBerries(this, coord, bush));
 		}
 	}
 }
@@ -97,7 +99,7 @@ std::vector<coordinate> findNextFood(coordinate root)
 		expand = frontier.back();
 		frontier.pop_back();
 		//std::cout << "Expanding " << expand.x << " " << expand.y << std::endl;
-		if (World::getObjectAt(expand) != nullptr && World::getObjectAt(expand)->isEdible())
+		if (world.getObjectAt(expand) != nullptr && world.getObjectAt(expand)->isEdible())
 		{
 			//std::cout << "Found something @" << expand.x << " " << expand.y << std::endl;
 			break;

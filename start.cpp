@@ -15,15 +15,16 @@
 
 
 
+World world;
 
 int main(int argc, char** argv)
 {
 
-	World::init();
+	world.init();
 	
 	while(true)
 	{
-		World::tick();
+		world.tick();
 		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	}
 

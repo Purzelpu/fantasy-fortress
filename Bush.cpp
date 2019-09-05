@@ -3,9 +3,11 @@
 #include "World.hpp"
 #include "GrowBerries.hpp"
 
+extern World world;
+
 	void Bush::tick()
 	{
-		World::registerAction(new GrowBerries(this));
+		world.registerAction(new GrowBerries(this));
 	}
 
 	char Bush::getSymbol()

@@ -9,7 +9,7 @@ public :
 	void curses_output();
 	void writeLog(std::string);
 private:
-	WINDOW* world;
-	WINDOW* log;
+	WINDOW* window_world;
+	WINDOW* window_log;
 	WINDOW* logBorder;
 };

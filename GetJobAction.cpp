@@ -2,10 +2,12 @@
 #include "World.hpp"
 #include <iostream>
 
+extern World world;
+
 bool GetJobAction::isValid()
 {
 	//TODO: Check if adjacent
-	return World::hasJobs();
+	return world.hasJobs();
 }
 
 void GetJobAction::execute()
@@ -15,7 +17,7 @@ void GetJobAction::execute()
 		//Throw?
 		return;
 	}
-	((Dwarf*)agent)->job = World::getJob();
+	((Dwarf*)agent)->job = world.getJob();
 
 	logMessage = "Found work";
 }

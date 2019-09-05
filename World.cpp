@@ -2,11 +2,6 @@
 #include "Dwarf.hpp"
 #include "Bush.hpp"
 
-Object* World::feld[BREIT][HOCH] = {nullptr};
-std::vector<Action*> World::action_queue;
-std::vector<Job*> World::job_queue;
-CursesOutput World::output;
-
 void World::init()
 {
 

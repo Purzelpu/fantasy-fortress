@@ -2,9 +2,11 @@
 #include "World.hpp"
 #include <iostream>
 
+extern World world;
+
 bool Move::isValid()
 {
-	return World::isValid(from) && World::isValid(to) && World::getObjectAt(from) == agent && World::getObjectAt(to) == nullptr;
+	return world.isValid(from) && world.isValid(to) && world.getObjectAt(from) == agent && world.getObjectAt(to) == nullptr;
 }
 
 void Move::execute()
@@ -16,7 +18,7 @@ void Move::execute()
 		return;
 	}
 
-	std::swap(World::feld[from.x][from.y], World::feld[to.x][to.y]);
+	std::swap(world.feld[from.x][from.y], world.feld[to.x][to.y]);
 	agent->coord = to;
 	logMessage = "Moving";
 }

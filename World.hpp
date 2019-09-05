@@ -12,19 +12,19 @@ const unsigned int BREIT = 30;
 
 class World{
 	public:
-	static Object* feld[BREIT][HOCH];
-	static Object* getObjectAt(coordinate& c);
-	static CursesOutput output;
-	static bool isValid(const coordinate&);
-	static void init();
-	static void tick();
-	static void registerAction(Action*);
-	static void registerJob(Job*);
-	static bool hasJobs();
-	static Job* getJob();
+	Object* feld[BREIT][HOCH] = {nullptr};
+	Object* getObjectAt(coordinate& c);
+	CursesOutput output;
+	bool isValid(const coordinate&);
+	void init();
+	void tick();
+	void registerAction(Action*);
+	void registerJob(Job*);
+	bool hasJobs();
+	Job* getJob();
 
 	private:
-	static std::vector<Action*> action_queue;
-	static std::vector<Job*> job_queue;
+	std::vector<Action*> action_queue;
+	std::vector<Job*> job_queue;
 };
 
