@@ -6,7 +6,7 @@
 bool TakeBerries::isValid()
 {
 	//TODO: Check if adjacent
-	return berries->isEdible() && ((Busch*)berries) -> hatBeeren(); 
+	return berries->isEdible() && ((Bush*)berries) -> hatBeeren(); 
 }
 
 void TakeBerries::execute()
@@ -16,7 +16,7 @@ void TakeBerries::execute()
 		//Throw?
 		return;
 	}
-	((Busch*)berries)->nimmBeeren();
+	((Bush*)berries)->nimmBeeren();
 	((Zwerg*)agent)->hunger = 0;
 
 	logMessage = "Eating";

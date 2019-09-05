@@ -10,9 +10,9 @@ CursesOutput World::output;
 void World::init()
 {
 
-	feld[3][3] = new Busch({3,3});
+	feld[3][3] = new Bush({3,3});
 	feld[7][7] = new Zwerg({7,7});
-	feld[11][5] = new Busch({11,5});
+	feld[11][5] = new Bush({11,5});
 
 	World::registerJob(new Job({10, 9},7));
 }

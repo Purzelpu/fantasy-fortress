@@ -5,7 +5,7 @@
 
 class GrowBerries: public Action {
 	public:
-		GrowBerries(Busch* a) : Action(a) {};
+		GrowBerries(Bush* a) : Action(a) {};
 		virtual void execute();
 
 	private:

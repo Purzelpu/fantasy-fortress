@@ -2,7 +2,7 @@
 
 #include "Object.hpp"
 
-class Busch : public Object
+class Bush : public Object
 {
 	friend class GrowBerries;
 	protected:
@@ -10,7 +10,7 @@ class Busch : public Object
 		unsigned char stage = 0;
 
 	public:
-	Busch(coordinate c) : Object(c) {}
+	Bush(coordinate c) : Object(c) {}
 
 	void tick();
 

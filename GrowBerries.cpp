@@ -8,12 +8,12 @@
 bool GrowBerries::isValid()
 {
 	//TODO: Check if adjacent
-	return agent != nullptr && static_cast<Busch*>(agent) -> beeren < 5; 
+	return agent != nullptr && static_cast<Bush*>(agent) -> beeren < 5; 
 }
 
 void GrowBerries::execute()
 {
-	Busch* bagent = static_cast<Busch*>(agent);
+	Bush* bagent = static_cast<Bush*>(agent);
 	if(!isValid())
 	{
 		//Throw?

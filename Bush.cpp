@@ -3,12 +3,12 @@
 #include "World.hpp"
 #include "GrowBerries.hpp"
 
-	void Busch::tick()
+	void Bush::tick()
 	{
 		World::registerAction(new GrowBerries(this));
 	}
 
-	char Busch::getSymbol()
+	char Bush::getSymbol()
 	{
 		if(beeren == 0)
 		{
@@ -20,17 +20,17 @@
 		}
 	}
 
-	bool Busch::hatBeeren()
+	bool Bush::hatBeeren()
 	{
 		return beeren>0;
 	}
 
-	void Busch::nimmBeeren()
+	void Bush::nimmBeeren()
 	{
 		beeren = 0;
 	}
 
-	bool Busch::isEdible()
+	bool Bush::isEdible()
 	{
 		return hatBeeren();
 	}
