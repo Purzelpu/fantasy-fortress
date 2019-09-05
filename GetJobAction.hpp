@@ -1,11 +1,11 @@
 #pragma once
 #include "Action.hpp"
 #include "Coordinate.hpp"
-#include "Zwerg.hpp"
+#include "Dwarf.hpp"
 
 class GetJobAction : public Action {
 	public:
-		GetJobAction(Zwerg* a): Action(a) {};
+		GetJobAction(Dwarf* a): Action(a) {};
 		virtual void execute();
 
 	private:

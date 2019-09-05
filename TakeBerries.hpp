@@ -1,11 +1,11 @@
 #pragma once
 #include "Action.hpp"
 #include "Coordinate.hpp"
-#include "Zwerg.hpp"
+#include "Dwarf.hpp"
 
 class TakeBerries: public Action {
 	public:
-		TakeBerries(Zwerg* a, coordinate f, Object* b) : Action(a), from(f), berries(b) {};
+		TakeBerries(Dwarf* a, coordinate f, Object* b) : Action(a), from(f), berries(b) {};
 		virtual void execute();
 
 	private:

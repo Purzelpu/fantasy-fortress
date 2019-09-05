@@ -28,7 +28,7 @@ void Work::execute()
 	if(job -> isDone())
 	{
 		logMessage = "Job done";
-		Zwerg* z = static_cast<Zwerg*>(agent);
+		Dwarf* z = static_cast<Dwarf*>(agent);
 		z -> job = nullptr;
 		delete job;
 	}

@@ -15,7 +15,7 @@ void GetJobAction::execute()
 		//Throw?
 		return;
 	}
-	((Zwerg*)agent)->job = World::getJob();
+	((Dwarf*)agent)->job = World::getJob();
 
 	logMessage = "Found work";
 }

@@ -1,5 +1,5 @@
 #include "World.hpp"
-#include "Zwerg.hpp"
+#include "Dwarf.hpp"
 #include "Bush.hpp"
 
 Object* World::feld[BREIT][HOCH] = {nullptr};
@@ -11,7 +11,7 @@ void World::init()
 {
 
 	feld[3][3] = new Bush({3,3});
-	feld[7][7] = new Zwerg({7,7});
+	feld[7][7] = new Dwarf({7,7});
 	feld[11][5] = new Bush({11,5});
 
 	World::registerJob(new Job({10, 9},7));

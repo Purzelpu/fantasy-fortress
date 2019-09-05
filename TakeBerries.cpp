@@ -17,7 +17,7 @@ void TakeBerries::execute()
 		return;
 	}
 	((Bush*)berries)->nimmBeeren();
-	((Zwerg*)agent)->hunger = 0;
+	((Dwarf*)agent)->hunger = 0;
 
 	logMessage = "Eating";
 }

@@ -7,7 +7,7 @@
 
 #include "Object.hpp"
 #include "Bush.hpp"
-#include "Zwerg.hpp"
+#include "Dwarf.hpp"
 #include "World.hpp"
 #include "CursesOutput.hpp"
 
