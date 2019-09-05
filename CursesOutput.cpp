@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include "World.hpp"
 #include "CursesOutput.hpp"
+#include "Coordinate.hpp"
 
 extern World world;
 
@@ -34,13 +35,13 @@ void CursesOutput::curses_output()
 	for(unsigned int x=0;x<BREIT;++x)
 	for(unsigned int y=0;y<HOCH;++y)
 	{
-		if(world.feld[x + y*BREIT] == nullptr)
+		if(world[{x,y}] == nullptr)
 		{
 			mvwaddch(window_world,y+1,x+1,'.');
 		}
 		else
 		{
-			mvwaddch(window_world, y+1,x+1,world.feld[x + y*BREIT] -> getSymbol());
+			mvwaddch(window_world, y+1,x+1, (world[{x,y}] -> getSymbol())) ;
 		}
 	}
 	wrefresh(window_world);
