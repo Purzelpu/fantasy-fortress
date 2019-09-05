@@ -36,11 +36,6 @@ void World::tick()
 	output.curses_output();
 }
 
-bool World::isValid(const coordinate& c)
-{
-	return (c.x <= BREIT) && (c.y <=HOCH);
-}
-
 Object* World::getObjectAt(coordinate& c)
 {
 	//Check coordinates
@@ -57,7 +52,7 @@ void World::registerJob(Job* job)
 	job_queue.push_back(job);
 }
 
-bool World::hasJobs()
+bool World::hasJobs() const
 {
 	return !job_queue.empty();
 }

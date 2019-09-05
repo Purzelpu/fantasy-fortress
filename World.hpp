@@ -15,12 +15,15 @@ class World{
 	Object* feld[BREIT][HOCH] = {nullptr};
 	Object* getObjectAt(coordinate& c);
 	CursesOutput output;
-	bool isValid(const coordinate&);
+	constexpr bool isValid(const coordinate& c) const
+	{
+		return (c.x <= BREIT) && (c.y <=HOCH);
+	}
 	void init();
 	void tick();
 	void registerAction(Action*);
 	void registerJob(Job*);
-	bool hasJobs();
+	bool hasJobs() const;
 	Job* getJob();
 
 	private:
