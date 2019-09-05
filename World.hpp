@@ -12,7 +12,7 @@ const unsigned int BREIT = 30;
 
 class World{
 	public:
-	Object* feld[BREIT][HOCH] = {nullptr};
+	Object* feld[BREIT*HOCH] = {nullptr};
 	Object*& operator[](const Coordinate&);
 	CursesOutput output;
 	constexpr bool isValid(const Coordinate& c) const

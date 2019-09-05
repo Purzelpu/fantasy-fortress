@@ -34,13 +34,13 @@ void CursesOutput::curses_output()
 	for(unsigned int x=0;x<BREIT;++x)
 	for(unsigned int y=0;y<HOCH;++y)
 	{
-		if(world.feld[x][y] == nullptr)
+		if(world.feld[x + y*BREIT] == nullptr)
 		{
 			mvwaddch(window_world,y+1,x+1,'.');
 		}
 		else
 		{
-			mvwaddch(window_world, y+1,x+1,world.feld[x][y] -> getSymbol());
+			mvwaddch(window_world, y+1,x+1,world.feld[x + y*BREIT] -> getSymbol());
 		}
 	}
 	wrefresh(window_world);
