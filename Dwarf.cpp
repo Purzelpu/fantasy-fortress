@@ -59,16 +59,16 @@ void Dwarf::tick()
 	//Find food
 	else
 	{
-		std::vector<coordinate> food = findNextFood(coord);
+		std::vector<Coordinate> food = findNextFood(coord);
 		if(food.empty()) return; //No food found :( Do nothing. 
 		if(food.size() > 1)
 		{
-			coordinate step = food.back();
+			Coordinate step = food.back();
 			world.registerAction(new Move(this, coord, step));
 		}
 		if(food.size() == 1)
 		{
-			coordinate bush_coord = food.back();
+			Coordinate bush_coord = food.back();
 			Object* bush = world[bush_coord];
 			world.registerAction(new TakeBerries(this, coord, bush));
 		}
@@ -77,11 +77,11 @@ void Dwarf::tick()
 
 
 //Use flood fill to find the bush closest to (x,y).
-std::vector<coordinate> findNextFood(coordinate root)
+std::vector<Coordinate> findNextFood(Coordinate root)
 {
-	std::vector<coordinate> path;
+	std::vector<Coordinate> path;
 
-	coordinate came_from[BREIT][HOCH];
+	Coordinate came_from[BREIT][HOCH];
 	for(unsigned int i=0;i<BREIT;i++)
 		for(unsigned int j=0;j<HOCH;j++)
 		{
@@ -89,10 +89,10 @@ std::vector<coordinate> findNextFood(coordinate root)
 			came_from[i][j] = {BREIT+1, HOCH+1};
 		}
 
-	std::deque<coordinate> frontier;
+	std::deque<Coordinate> frontier;
 	frontier.push_front(root);
 	came_from[root.x][root.y] = root;
-	coordinate expand;
+	Coordinate expand;
 
 	while(!frontier.empty())
 	{
@@ -108,26 +108,26 @@ std::vector<coordinate> findNextFood(coordinate root)
 		{
 			unsigned int x = expand.x;
 			unsigned int y = expand.y;
-			//coordinates are unsigned -> 0-1 = BIG
-			if(x-1 < BREIT && came_from[x-1][y] == coordinate({BREIT+1, HOCH+1})) 
+			//Coordinates are unsigned -> 0-1 = BIG
+			if(x-1 < BREIT && came_from[x-1][y] == Coordinate({BREIT+1, HOCH+1})) 
 			{
 				frontier.push_front({x-1,y});
 				came_from[x-1][y] = {x,y};
 				//std::cout << "Added " << x-1 << " " << y << std::endl;
 			}
-			if(y-1 < HOCH && came_from[x][y-1] == coordinate({BREIT+1, HOCH+1}))
+			if(y-1 < HOCH && came_from[x][y-1] == Coordinate({BREIT+1, HOCH+1}))
 			{
 				frontier.push_front({x,y-1});
 				came_from[x][y-1] = {x,y};
 				//std::cout << "Added " << x << " " << y-1 << std::endl;
 			}
-			if(x+1 < BREIT && came_from[x+1][y] == coordinate({BREIT+1, HOCH+1}))
+			if(x+1 < BREIT && came_from[x+1][y] == Coordinate({BREIT+1, HOCH+1}))
 			{
 				frontier.push_front({x+1, y});
 				came_from[x+1][y] = {x,y};
 				//std::cout << "Added " << x+1 << " " << y << std::endl;
 			}
-			if(y+1 < HOCH && came_from[x][y+1] == coordinate({BREIT+1, HOCH+1}))
+			if(y+1 < HOCH && came_from[x][y+1] == Coordinate({BREIT+1, HOCH+1}))
 			{
 				frontier.push_front({x,y+1});
 				came_from[x][y+1] = {x,y};

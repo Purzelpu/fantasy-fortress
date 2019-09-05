@@ -10,7 +10,7 @@ class Bush : public Object
 		unsigned char stage = 0;
 
 	public:
-	Bush(coordinate c) : Object(c) {}
+	Bush(Coordinate c) : Object(c) {}
 
 	void tick();
 

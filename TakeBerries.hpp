@@ -5,11 +5,11 @@
 
 class TakeBerries: public Action {
 	public:
-		TakeBerries(Dwarf* a, coordinate f, Object* b) : Action(a), from(f), berries(b) {};
+		TakeBerries(Dwarf* a, Coordinate f, Object* b) : Action(a), from(f), berries(b) {};
 		virtual void execute() override;
 
 	private:
-		coordinate from;
+		Coordinate from;
 		Object* berries;
 		virtual bool isValid() const override;
 

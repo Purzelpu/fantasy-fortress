@@ -15,7 +15,7 @@ class Dwarf : public Object
 		Job* job = nullptr;
 
 	public:
-		Dwarf(coordinate c) : Object(c) {}
+		Dwarf(Coordinate c) : Object(c) {}
 		void tick();
 
 		char getSymbol() {
@@ -23,4 +23,4 @@ class Dwarf : public Object
 		}
 };
 
-std::vector<coordinate> findNextFood(coordinate);
+std::vector<Coordinate> findNextFood(Coordinate);

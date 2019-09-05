@@ -13,9 +13,9 @@ const unsigned int BREIT = 30;
 class World{
 	public:
 	Object* feld[BREIT][HOCH] = {nullptr};
-	Object*& operator[](const coordinate&);
+	Object*& operator[](const Coordinate&);
 	CursesOutput output;
-	constexpr bool isValid(const coordinate& c) const
+	constexpr bool isValid(const Coordinate& c) const
 	{
 		return (c.x <= BREIT) && (c.y <=HOCH);
 	}

@@ -4,13 +4,13 @@
 
 class Move : public Action {
 	public:
-		Move(Object* a, coordinate f, coordinate t) : Action(a), from(f), to(t) {};
+		Move(Object* a, Coordinate f, Coordinate t) : Action(a), from(f), to(t) {};
 		~Move() {};
 		virtual void execute() override;
 
 	private:
-		coordinate from;
-		coordinate to;
+		Coordinate from;
+		Coordinate to;
 		virtual bool isValid() const override;
 
 };

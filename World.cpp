@@ -58,7 +58,7 @@ Job* World::getJob()
 	return j;
 }
 
-Object*& World::operator[](const coordinate& c)
+Object*& World::operator[](const Coordinate& c)
 {
 	//if(!isValid(c))
 	{

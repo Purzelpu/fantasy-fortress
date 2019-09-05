@@ -4,7 +4,7 @@
 class Object
 {
 	public:
-	coordinate coord;
+	Coordinate coord;
 	virtual void tick() = 0;
 	virtual char getSymbol() = 0;
 	virtual bool isEdible()
@@ -12,6 +12,6 @@ class Object
 		return false;
 	}
 
-	Object(coordinate c) : coord(c) {}
+	Object(Coordinate c) : coord(c) {}
 
 };
