@@ -69,7 +69,7 @@ void Dwarf::tick()
 		if(food.size() == 1)
 		{
 			coordinate bush_coord = food.back();
-			Object* bush = world.getObjectAt(bush_coord);
+			Object* bush = world[bush_coord];
 			world.registerAction(new TakeBerries(this, coord, bush));
 		}
 	}
@@ -99,7 +99,7 @@ std::vector<coordinate> findNextFood(coordinate root)
 		expand = frontier.back();
 		frontier.pop_back();
 		//std::cout << "Expanding " << expand.x << " " << expand.y << std::endl;
-		if (world.getObjectAt(expand) != nullptr && world.getObjectAt(expand)->isEdible())
+		if (world[expand] != nullptr && world[expand]->isEdible())
 		{
 			//std::cout << "Found something @" << expand.x << " " << expand.y << std::endl;
 			break;

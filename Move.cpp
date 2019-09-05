@@ -6,7 +6,7 @@ extern World world;
 
 bool Move::isValid()
 {
-	return world.isValid(from) && world.isValid(to) && world.getObjectAt(from) == agent && world.getObjectAt(to) == nullptr;
+	return world.isValid(from) && world.isValid(to) && world[from] == agent && world[to] == nullptr;
 }
 
 void Move::execute()
@@ -18,7 +18,7 @@ void Move::execute()
 		return;
 	}
 
-	std::swap(world.feld[from.x][from.y], world.feld[to.x][to.y]);
+	std::swap(world[from], world[to]);
 	agent->coord = to;
 	logMessage = "Moving";
 }

@@ -36,12 +36,6 @@ void World::tick()
 	output.curses_output();
 }
 
-Object* World::getObjectAt(coordinate& c)
-{
-	//Check coordinates
-	return feld[c.x][c.y];
-}
-
 void World::registerAction(Action* a)
 {
 	action_queue.push_back(a);
@@ -62,4 +56,14 @@ Job* World::getJob()
 	Job* j = job_queue.back();
 	job_queue.pop_back();
 	return j;
+}
+
+Object*& World::operator[](const coordinate& c)
+{
+	//if(!isValid(c))
+	{
+		//Throw?
+	}
+
+	return feld[c.x][c.y];
 }

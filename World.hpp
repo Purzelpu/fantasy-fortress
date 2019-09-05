@@ -13,7 +13,7 @@ const unsigned int BREIT = 30;
 class World{
 	public:
 	Object* feld[BREIT][HOCH] = {nullptr};
-	Object* getObjectAt(coordinate& c);
+	Object*& operator[](const coordinate&);
 	CursesOutput output;
 	constexpr bool isValid(const coordinate& c) const
 	{
