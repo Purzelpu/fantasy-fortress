@@ -5,7 +5,7 @@
 #include <iostream>
 #include <sstream>
 
-bool GrowBerries::isValid()
+bool GrowBerries::isValid() const
 {
 	//TODO: Check if adjacent
 	return agent != nullptr && static_cast<Bush*>(agent) -> beeren < 5; 

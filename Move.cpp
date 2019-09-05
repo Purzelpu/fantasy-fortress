@@ -4,7 +4,7 @@
 
 extern World world;
 
-bool Move::isValid()
+bool Move::isValid() const
 {
 	return world.isValid(from) && world.isValid(to) && world[from] == agent && world[to] == nullptr;
 }

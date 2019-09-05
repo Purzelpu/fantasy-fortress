@@ -4,7 +4,7 @@
 
 extern World world;
 
-bool GetJobAction::isValid()
+bool GetJobAction::isValid() const
 {
 	//TODO: Check if adjacent
 	return world.hasJobs();

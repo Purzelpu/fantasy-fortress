@@ -6,9 +6,9 @@
 class GetJobAction : public Action {
 	public:
 		GetJobAction(Dwarf* a): Action(a) {};
-		virtual void execute();
+		virtual void execute() override;
 
 	private:
-		virtual bool isValid();
+		virtual bool isValid() const override;
 
 };

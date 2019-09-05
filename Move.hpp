@@ -6,11 +6,11 @@ class Move : public Action {
 	public:
 		Move(Object* a, coordinate f, coordinate t) : Action(a), from(f), to(t) {};
 		~Move() {};
-		virtual void execute();
+		virtual void execute() override;
 
 	private:
 		coordinate from;
 		coordinate to;
-		virtual bool isValid();
+		virtual bool isValid() const override;
 
 };

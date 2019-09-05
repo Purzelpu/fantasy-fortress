@@ -3,7 +3,7 @@
 #include "Bush.hpp"
 #include <iostream>
 
-bool TakeBerries::isValid()
+bool TakeBerries::isValid() const
 {
 	//TODO: Check if adjacent
 	return berries->isEdible() && ((Bush*)berries) -> hatBeeren(); 

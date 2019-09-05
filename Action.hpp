@@ -12,5 +12,5 @@ class Action {
 	virtual void execute();
 
 	private:
-	virtual bool isValid();
+	virtual bool isValid() const;
 };
