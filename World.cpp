@@ -1,13 +1,26 @@
 #include "World.hpp"
 #include "Dwarf.hpp"
 #include "Bush.hpp"
+#include <stdexcept>
+#include <sstream>
+
+Object*& World::operator[](const Coordinate& c)
+{
+	if(!isValid(c))
+	{
+		std::stringstream errorStream;
+		errorStream << "Tried to access invalid coordinate: " << c;
+		throw std::invalid_argument(errorStream.str());
+	}
+
+	return feld[c.x+c.y*BREIT];
+}
 
 void World::init()
 {
-
-	feld[3+ 3*BREIT] = new Bush({3,3});
-	feld[7+ 7*BREIT] = new Dwarf({7,7});
-	feld[11 + 5*BREIT] = new Bush({11,5});
+	(*this)[{3,3}] = new Bush({3,3});
+	(*this)[{7,7}] = new Dwarf({7,7});
+	(*this)[{11,5}] = new Bush({11,5});
 
 	World::registerJob(new Job({10, 9},7));
 }
@@ -53,14 +66,4 @@ Job* World::getJob()
 	Job* j = job_queue.back();
 	job_queue.pop_back();
 	return j;
-}
-
-Object*& World::operator[](const Coordinate& c)
-{
-	//if(!isValid(c))
-	{
-		//Throw?
-	}
-
-	return feld[c.x+c.y*BREIT];
 }
